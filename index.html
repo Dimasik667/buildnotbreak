@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNB OS | Professional Asset Management</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="bg-noise"></div>
+    <div class="bg-glow"></div>
+
+    <div id="auth-screen" class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-logo">BUILD<span>NOT</span>BREAK</div>
+            <div class="auth-ui">
+                <h2>BNB<span>OS</span></h2>
+                <p>Екатеринбург • Система контроля парка</p>
+                <input type="text" id="user-input" placeholder="Имя специалиста" autocomplete="off">
+                <button id="login-btn" class="primary-btn">Авторизоваться</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-container" class="hidden">
+        <nav class="glass-nav">
+            <div class="nav-left">
+                <button id="geo-btn" class="geo-btn">
+                    <span class="material-symbols-outlined">near_me</span>
+                    <span>Найти рядом</span>
+                </button>
+                <div class="logo">BUILD<span>NOT</span>BREAK</div>
+            </div>
+        <div class="nav-right">
+            <div class="user-profile" id="user-hub">
+                <div class="avatar" id="avatar-initials">?</div>
+                <div class="user-info">
+                    <span class="u-name" id="display-name">Загрузка...</span>
+                    <span id="booking-count-simple" style="font-size: 10px; opacity: 0.6;">Нажмите для управления</span>
+                </div>
+                
+                <div id="my-bookings" class="bookings-dropdown hidden">
+                    <div class="dropdown-header">
+                        <h4>Ваш аккаунт</h4>
+                        <button id="logout-btn" class="logout-link">Выйти</button>
+                    </div>
+                    <div class="divider"></div>
+                    <h4>Ваше оборудование</h4>
+                    <ul id="bookings-list"></ul>
+                </div>
+            </div>
+        </div>
+</div>
+        </nav>
+
+        <main class="content">
+            <div class="hero">
+                <h1>Не сдавайтесь <span class="orange-text">стройтесь.</span></h1>
+                
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-num">01</div>
+                        <div class="step-text">Выберите технику в каталоге</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">02</div>
+                        <div class="step-text">Проверьте локацию на карте</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">03</div>
+                        <div class="step-text">Забронируйте и заберите</div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <span>Категория:</span>
+                        <div class="filter-row">
+                            <button class="filter-chip active" data-type="all">Все категории</button>
+                            <button class="filter-chip" data-type="hand">Электроинструмент</button>
+                            <button class="filter-chip" data-type="high">Высотные работы</button>
+                            <button class="filter-chip" data-type="garden">Садовая техника</button>
+                            <button class="filter-chip" data-type="heavy">Энергоснабжение</button> </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <span>Бренд:</span>
+                        <div class="filter-row">
+                            <button class="brand-chip active" data-brand="all">Все бренды</button>
+                            <button class="brand-chip" data-brand="Makita">Makita</button>
+                            <button class="brand-chip" data-brand="DeWalt">DeWalt</button>
+                            <button class="brand-chip" data-brand="Bosch">Bosch</button>
+                            <button class="brand-chip" data-brand="Stihl">Stihl</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-grid" id="grid-container"></div>
+        </main>
+    </div>
+
+    <div id="modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal">&times;</button>
+            <div id="modal-body"></div>
+            <div class="modal-actions">
+                <button id="main-book-btn" class="confirm-btn">Забронировать актив</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="script.js"></script>
+</body>
+</html>
