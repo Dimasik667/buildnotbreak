@@ -240,6 +240,15 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
         align-items: flex-start;
         gap: 10px;
     }
+
+    #my-bookings {
+        position: absolute;
+        left: 10px !important;   /* Прижимаем к левому краю с небольшим отступом */
+        right: auto !important;  /* Отключаем привязку к правому краю */
+        width: calc(100% - 20px); /* Растягиваем почти на всю ширину, чтобы было аккуратно */
+        margin: 0 !important;    /* Убираем центрирование через margin */
+        top: 70px;               /* Отступ сверху, чтобы не перекрывал шапку */
+    }
 }
 
 .dropdown-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
