@@ -230,20 +230,38 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 
     /* 2. ШАГИ: сужаем колонку и убиваем линии */
     .steps-container {
-        flex-direction: column;
-        align-items: center; /* Центрируем всю колонку */
-        gap: 20px;
-        padding: 0 10px;
+        flex-direction: row !important; /* Принудительно в ряд */
+        justify-content: space-between;
+        gap: 8px; /* Минимальный зазор */
+        padding: 0;
+        align-items: flex-start;
     }
 
     .step-card {
-        width: 100%;
-        max-width: 280px; /* Сужаем саму карточку, чтобы она не была «лопатой» */
-        margin: 0 auto;
-        position: relative;
+        flex: 1; /* Все шаги делят место поровну */
+        padding: 12px 8px; /* Уменьшаем внутренние отступы */
+        min-width: 0; /* Чтобы flex-box мог сжимать карточки */
     }
 
-    /* Убираем линии (те самые псевдоэлементы ::after) */
+    /* Уменьшаем иконки и текст внутри шагов */
+    .step-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .step-card h3 {
+        font-size: 11px; /* Совсем мелкий шрифт для заголовков */
+        margin-bottom: 4px;
+    }
+
+    .step-card p {
+        font-size: 9px; /* Крошечный текст описания */
+        line-height: 1.2;
+    }
+
+    /* ГАРАНТИРОВАННО УБИРАЕМ ЛИНИИ */
     .step-card::after {
         display: none !important;
     }
