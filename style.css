@@ -347,3 +347,56 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 @media (max-width: 768px) {
     .footer-content { flex-direction: column; gap: 20px; text-align: center; }
 }
+
+/* --- АДАПТАЦИЯ ДЛЯ НОУТБУКОВ (Desktop Version) --- */
+@media (min-width: 992px) {
+    /* 1. Центрируем контент и ограничиваем его ширину, чтобы он не разъезжался */
+    .app-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    /* 2. Делаем сетку товаров в 3 или 4 колонки */
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+        gap: 24px; /* Расстояние между карточками */
+        padding: 20px 0;
+    }
+
+    /* 3. Исправляем фильтры: на ноуте они должны быть в ряд, а не друг под другом */
+    .filters-section {
+        display: flex;
+        flex-direction: row; /* Выстраиваем в линию */
+        gap: 30px;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 25px;
+        border-radius: 20px;
+        margin-bottom: 40px;
+        align-items: flex-start;
+    }
+
+    .filter-group {
+        flex: 1; /* Группы фильтров делят место поровну */
+    }
+
+    /* 4. Делаем карточки товаров аккуратнее */
+    .tool-card {
+        aspect-ratio: 4/5; /* Делаем их прямоугольными и одинаковыми */
+        height: auto;
+    }
+
+    /* 5. Уменьшаем гигантскую форму входа (Auth Card) */
+    .auth-card {
+        width: 400px;
+        padding: 40px;
+    }
+}
+
+/* Для очень больших мониторов */
+@media (min-width: 1400px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    }
+}
