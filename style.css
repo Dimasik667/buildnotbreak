@@ -241,14 +241,16 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
         gap: 10px;
     }
 
-    #my-bookings {
-        position: absolute;
-        left: 10px !important;   /* Прижимаем к левому краю с небольшим отступом */
-        right: auto !important;  /* Отключаем привязку к правому краю */
-        width: calc(100% - 20px); /* Растягиваем почти на всю ширину, чтобы было аккуратно */
-        margin: 0 !important;    /* Убираем центрирование через margin */
-        top: 70px;               /* Отступ сверху, чтобы не перекрывал шапку */
+    .bookings-dropdown {
+        position: fixed !important; /* Чтобы окно не зависело от родителя */
+        left: 15px !important;      /* Четкий отступ слева */
+        right: 15px !important;     /* Четкий отступ справа, чтобы было по ширине экрана */
+        width: auto !important;     /* Позволяем left и right задать ширину */
+        transform: none !important; /* Убираем любые сдвиги */
+        top: 70px !important;       /* Высота под шапкой */
+        z-index: 10000;             /* Чтобы было поверх всего */
     }
+
 }
 
 .dropdown-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
