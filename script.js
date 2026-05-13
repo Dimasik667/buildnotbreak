@@ -11,38 +11,99 @@ const toolsDB = [
     { id: 19, name: "Газонокосилка Bosch ARM 34", type: "garden", brand: "Bosch", price: 950, wide: false, lat: 56.87, lon: 60.65, img: "https://cdn1.ozone.ru/s3/multimedia-h/6668234729.jpg", desc: "Легкая роторная косилка для идеального газона." },
     { id: 4, name: "Генератор Fubag TI 2300", type: "heavy", brand: "Other", price: 3200, wide: true, lat: 56.79, lon: 60.55, img: "https://avatars.mds.yandex.net/i?id=3cf5ea8d4ad47da7b2984695f3189a8f_l-5289481-images-thumbs&n=13", desc: "Инверторный генератор для чувствительной электроники." },
     { id: 20, name: "Бензогенератор Makita EG2250A", type: "heavy", brand: "Makita", price: 2800, wide: false, lat: 56.83, lon: 60.52, img: "https://makita-dv.ru/product/big/eg2250a.jpg", desc: "Надежный источник питания для строительной площадки." },
-    { id: 21, name: "Сварочный инвертор Ресанта", type: "heavy", brand: "Other", price: 1100, wide: false, lat: 56.85, lon: 60.68, img: "https://ir.ozone.ru/s3/multimedia-1-u/7472734518.jpg", desc: "Компактный аппарат для ручной дуговой сварки." }
+    { id: 21, name: "Сварочный инвертор Ресанта", type: "heavy", brand: "Other", price: 1100, wide: false, lat: 56.85, lon: 60.68, img: "https://ir.ozone.ru/s3/multimedia-1-u/7472734518.jpg", desc: "Компактный аппарат для ручной дуговой сварки." },
+    { id: 22, name: "Лобзик Makita 4329", type: "hand", brand: "Makita", price: 500, wide: false, lat: 56.90, lon: 60.68, img: "https://cdn-products.sdvor.com/images/sdvor-catalog/800x800/0/r2615.jpg?t=1709267773030", desc: "Удобный лобзик Makita." },
+    {id: 23, name: "Шуруповерт Bosch GSR 18V-50", type: "hand", brand: "Bosch", price: 900, wide: true, lat: 56.84, lon: 60.61, img: "https://kotofoto.ru/product_img/2301/344201/344201_bosch-gsr-18v-50-06019h5020_4.jpg?v=1764338611", desc: "Надежный бесщеточный двигатель для тяжелых работ." },
+    { id: 24, name: "Строительный фен DeWalt D26411", type: "hand", brand: "DeWalt", price: 650, wide: false, lat: 56.81, lon: 60.55, img: "https://avatars.mds.yandex.net/get-mpic/5177644/img_id2941562101652140239.jpeg/orig", desc: "Две настройки температуры для снятия краски и сварки пластика." },
+    { id: 25, name: "Сабельная пила Makita DJR187Z", type: "hand", brand: "Makita", price: 1350, wide: false, lat: 56.86, lon: 60.52, img: "https://avatars.mds.yandex.net/get-mpic/11474376/2a0000019a5769a0a9670ec9e8f220095568/orig", desc: "Высокая скорость резки металла и дерева." },
+    { id: 26, name: "Лазерный уровень Bosch GLL 3-80", type: "hand", brand: "Bosch", price: 1800, wide: true, lat: 56.83, lon: 60.65, img: "https://avatars.mds.yandex.net/get-mpic/5304975/img_id1625323576000750485.jpeg/orig", desc: "Построение трех плоскостей на 360 градусов." },
+    { id: 27, name: "Подъемник ножничный", type: "high", brand: "Other", price: 4500, wide: false, lat: 56.78, lon: 60.63, img: "https://cdn.vseinstrumenti.ru/images/goods/skladskoe-oborudovanie-i-tehnika-dlya-sklada/skladskaya-tehnika/20995994/2400x1600/206512298.jpg", desc: "Электрический подъемник для монтажных работ в цехах." },
+    { id: 28, name: "Альпинистское снаряжение (комплект)", type: "high", brand: "Other", price: 1200, wide: false, lat: 56.85, lon: 60.60, img: "https://bigwall.ru/upload/iblock/c37/mlzg6xkmwo1g2689tcxh3gtsbrvd3ias/Komplekt-SHTURM_3.jpg", desc: "Полный набор для промышленного альпинизма: обвязка, верёвки." },
+    { id: 29, name: "Воздуходувка Stihl BG 86", type: "garden", brand: "Stihl", price: 950, wide: false, lat: 56.87, lon: 60.58, img: "https://main-cdn.sbermegamarket.ru/big2/hlr-system/164/915/585/672/813/31/100023843603b0.jpg", desc: "Мощная очистка территорий от листвы и мусора." },
+    { id: 30, name: "Мотобур Stihl BT 131", type: "garden", brand: "Stihl", price: 2100, wide: true, lat: 56.89, lon: 60.62, img: "https://img.gardengear.ru/upload/iblock/bca/bca467e8b5802f30db89bf706b44a693.png", desc: "Профессиональный бур для установки заборов и посадок." },
+    { id: 31, name: "Триммер Makita UR3501", type: "garden", brand: "Makita", price: 750, wide: false, lat: 56.80, lon: 60.54, img: "https://avatars.mds.yandex.net/get-mpic/16413949/2a00000196fe67fe259304fa979e2abf28cc/orig", desc: "Электрический триммер для кошения травы у забора." },
+    { id: 32, name: "Виброплита Wacker Neuson", type: "heavy", brand: "Other", price: 3800, wide: true, lat: 56.84, lon: 60.48, img: "https://illeon.ru/upload/iblock/3b6/DPU3760H_wacker_neuson1.jpg", desc: "Уплотнение грунта, песка и асфальта при строительстве дорожек." },
+    { id: 33, name: "Бетоносмеситель 180л", type: "heavy", brand: "Other", price: 1400, wide: false, lat: 56.91, lon: 60.60, img: "https://cdn.vseinstrumenti.ru/images/goods/stroitelnoe-oborudovanie-i-tehnika/oborudovanie-dlya-betonnyh-rabot/1092410/2400x1600/79727383.jpg", desc: "Электрическая бетономешалка для больших объемов раствора." },
+    { id: 34, name: "Отбойный молоток Bosch GSH 11 E", type: "heavy", brand: "Bosch", price: 2400, wide: false, lat: 56.83, lon: 60.72, img: "https://cdn.vseinstrumenti.ru/images/goods/stroitelnyj-instrument/otbojnye-molotki/676/2400x1600/51593641.jpg", desc: "Максимальная энергия удара для демонтажа перекрытий." },
+    { id: 35, name: "Дизельная пушка Ballu BHDP-20", type: "heavy", brand: "Other", price: 1600, wide: false, lat: 56.77, lon: 60.59, img: "https://main-cdn.sbermegamarket.ru/big2/hlr-system/ccs/95012/MjExMDA3NzdfNzk5MDE4NTQ2/b0.jpg", desc: "Мощный обогрев строящихся объектов и складов." }
 ];
 
 // --- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ---
-let myBookings = JSON.parse(localStorage.getItem('bnb_bookings')) || [];
 let activeTool = null;
 let currentType = 'all';
 let currentBrand = 'all';
+let usersDB = JSON.parse(localStorage.getItem('bnb_users')) || [];
+let myBookings = JSON.parse(localStorage.getItem('bnb_bookings')) || [];
 
 // --- АВТОРИЗАЦИЯ ---
+function toggleAuth() {
+    document.getElementById('login-form').classList.toggle('hidden');
+    document.getElementById('reg-form').classList.toggle('hidden');
+}
+
+// Регистрация
+document.getElementById('reg-btn-final').onclick = () => {
+    const email = document.getElementById('reg-email').value.trim();
+    const name = document.getElementById('reg-user').value.trim();
+    const pass = document.getElementById('reg-pass').value.trim();
+
+    if (!email || !name || !pass) return showToast("Заполните все поля");
+    if (usersDB.find(u => u.name === name)) return showToast("Логин занят");
+
+    const newUser = { email, name, pass };
+    usersDB.push(newUser);
+    localStorage.setItem('bnb_users', JSON.stringify(usersDB));
+    
+    showToast("Регистрация успешна!");
+    toggleAuth(); // Перекидываем на вход
+};
+
+// Вход
+document.getElementById('login-btn-final').onclick = () => {
+    const name = document.getElementById('login-user').value.trim();
+    const pass = document.getElementById('login-pass').value.trim();
+
+    const user = usersDB.find(u => u.name === name && u.pass === pass);
+
+    if (user) {
+        localStorage.setItem('bnb_user', name);
+        loginUser(name);
+    } else {
+        showToast("Неверный логин или пароль");
+    }
+};
+
+
+function openInfo(type) {
+    const body = document.getElementById('info-body');
+    body.innerHTML = infoData[type];
+    document.getElementById('info-modal').classList.remove('hidden');
+}
+
+function closeInfo() {
+    document.getElementById('info-modal').classList.add('hidden');
+}
+
 function loginUser(name) {
     document.getElementById('auth-screen').classList.add('hidden');
     document.getElementById('app-container').classList.remove('hidden');
     document.getElementById('display-name').innerText = name;
     document.getElementById('avatar-initials').innerText = name[0].toUpperCase();
+    
+    // ЗАГРУЗКА ЛИЧНЫХ БРОНЕЙ:
+    // Ищем брони по ключу "bookings_ИмяПользователя"
+    myBookings = JSON.parse(localStorage.getItem(`bookings_${name}`)) || [];
+    
     updateUI();
     render();
 }
 
-document.getElementById('login-btn').onclick = () => {
-    const name = document.getElementById('user-input').value;
-    if(name.trim()) {
-        localStorage.setItem('bnb_user', name);
-        loginUser(name);
-    }
-};
-
+// Выход (исправлено, чтобы не удалять базу пользователей)
 document.getElementById('logout-btn').onclick = (e) => {
     e.stopPropagation();
-    if(confirm("Выйти из системы? Все данные сессии будут удалены.")) {
-        localStorage.clear(); // Удаляет и пользователя, и брони
-        window.location.href = window.location.pathname + "?" + Date.now(); 
+    if(confirm("Выйти из системы?")) {
+        localStorage.removeItem('bnb_user'); // Удаляем только текущую сессию
+        window.location.reload(); 
     }
 };
 
@@ -107,8 +168,18 @@ window.openRoute = (e, lat, lon) => {
 // --- БРОНИРОВАНИЕ ---
 document.getElementById('main-book-btn').onclick = () => {
     if (!activeTool) return;
+
+    // 1. Добавляем инструмент в локальный массив
     myBookings.push({...activeTool, bId: Date.now()});
-    localStorage.setItem('bnb_bookings', JSON.stringify(myBookings));
+
+    // 2. Получаем имя текущего пользователя
+    const currentUser = localStorage.getItem('bnb_user');
+
+    // 3. Сохраняем в localStorage с уникальным ключом для этого юзера
+    // Используем `bookings_${currentUser}`, чтобы брони Дмитрия не видел Никита
+    localStorage.setItem(`bookings_${currentUser}`, JSON.stringify(myBookings));
+
+    // 4. Обновляем интерфейс
     updateUI();
     document.getElementById('modal').classList.add('hidden');
     showToast("Инструмент забронирован!");
@@ -227,9 +298,14 @@ window.onclick = () => {
 // --- ИНИЦИАЛИЗАЦИЯ ---
 window.addEventListener('DOMContentLoaded', () => {
     const savedName = localStorage.getItem('bnb_user');
-    if (savedName) loginUser(savedName);
-    else render();
+    if (savedName) {
+        loginUser(savedName); // Внутри этой функции уже вызывается render() и updateUI()
+    } else {
+        render(); // Если не залогинены, просто показываем карточки
+    }
 });
+
+
 
 // Регистрация Service Worker для PWA
 if ('serviceWorker' in navigator) {
@@ -238,4 +314,38 @@ if ('serviceWorker' in navigator) {
             .then(reg => console.log("Service Worker зарегистрирован"))
             .catch(err => console.log("Ошибка SW:", err));
     });
+}
+
+// --- ЛОГИКА ИНФОРМАЦИОННЫХ МОДАЛОК (ФУТЕР) ---
+const infoData = {
+    privacy: `
+        <h2>Политика конфиденциальности</h2>
+        <p>Мы собираем только те данные, которые необходимы для работы сервиса BNB OS: ваш логин и историю бронирований.</p>
+        <p>Данные хранятся локально в вашем браузере и не передаются на сторонние сервера.</p>
+    `,
+    terms: `
+        <h2>Условия использования</h2>
+        <p>1. Инструмент выдается только авторизованным специалистам.</p>
+        <p>2. Бронирование активно в течение 24 часов.</p>
+        <p>3. Арендатор несет ответственность за сохранность и чистоту инструмента.</p>
+    `,
+    contacts: `
+        <h2>Техническая поддержка</h2>
+        <p>Возникли вопросы по работе BNB OS или неисправности инструмента?</p>
+        <p><b>Локация базы:</b> Екатеринбург, ул. Малышева 117</p>
+        <p><b>Email:</b> help@bnb-os.ru</p>
+        <p><b>Телефон:</b> +7 (343) 123-45-67</p>
+    `
+};
+
+function openInfo(type) {
+    const body = document.getElementById('info-body');
+    if (body && infoData[type]) {
+        body.innerHTML = infoData[type];
+        document.getElementById('info-modal').classList.remove('hidden');
+    }
+}
+
+function closeInfo() {
+    document.getElementById('info-modal').classList.add('hidden');
 }

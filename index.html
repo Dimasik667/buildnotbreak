@@ -13,17 +13,30 @@
     <div class="bg-noise"></div>
     <div class="bg-glow"></div>
 
-    <div id="auth-screen" class="auth-wrapper">
-        <div class="auth-card">
-            <div class="auth-logo">BUILD<span>NOT</span>BREAK</div>
-            <div class="auth-ui">
-                <h2>BNB<span>OS</span></h2>
-                <p>Екатеринбург • Система контроля парка</p>
-                <input type="text" id="user-input" placeholder="Имя специалиста" autocomplete="off">
-                <button id="login-btn" class="primary-btn">Авторизоваться</button>
-            </div>
+<div id="auth-screen" class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-logo">BUILD<span>NOT</span>BREAK</div>
+        
+        <div id="login-form" class="auth-ui">
+            <h2>BNB<span>OS</span></h2>
+            <p>Екатеринбург • Вход</p>
+            <input type="text" id="login-user" placeholder="Имя специалиста" autocomplete="off">
+            <input type="password" id="login-pass" placeholder="Пароль" autocomplete="off">
+            <button id="login-btn-final" class="primary-btn">Авторизоваться</button>
+            <p style="margin-top: 20px; cursor: pointer; color: var(--accent);" onclick="toggleAuth()">Нет аккаунта? Регистрация</p>
+        </div>
+
+        <div id="reg-form" class="auth-ui hidden">
+            <h2>Регистрация</h2>
+            <p>Создание профиля</p>
+            <input type="email" id="reg-email" placeholder="Электронная почта" autocomplete="off">
+            <input type="text" id="reg-user" placeholder="Логин" autocomplete="off">
+            <input type="password" id="reg-pass" placeholder="Пароль" autocomplete="off">
+            <button id="reg-btn-final" class="primary-btn">Создать аккаунт</button>
+            <p style="margin-top: 20px; cursor: pointer; color: var(--accent);" onclick="toggleAuth()">Уже есть аккаунт? Войти</p>
         </div>
     </div>
+</div>
 
     <div id="app-container" class="hidden">
         <nav class="glass-nav">
@@ -60,6 +73,9 @@
             <div class="hero">
                 <h1>Не сдавайтесь <span class="orange-text">стройтесь.</span></h1>
                 
+                <h2 class="steps-title-inner">Всего <span>3 шага</span> до эффективной работы</h2>
+                <h2 class="steps-title-inner"><span>↓</span></h2>
+                                    
                 <div class="steps-container">
                     <div class="step">
                         <div class="step-num">01</div>
@@ -108,12 +124,29 @@
             <button class="close-btn" id="close-modal">&times;</button>
             <div id="modal-body"></div>
             <div class="modal-actions">
-                <button id="main-book-btn" class="confirm-btn">Забронировать актив</button>
+                <button id="main-book-btn" class="confirm-btn">Забронировать</button>
             </div>
         </div>
     </div>
 
     <div id="toast" class="toast hidden"></div>
     <script src="script.js"></script>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-copy">&copy; 2026 BUILDNOTBREAK. Все права защищены.</div>
+        <div class="footer-links">
+            <a href="javascript:void(0)" onclick="openInfo('privacy')">Политика конфиденциальности</a>
+            <a href="javascript:void(0)" onclick="openInfo('terms')">Условия использования</a>
+            <a href="javascript:void(0)" onclick="openInfo('contacts')">Поддержка</a>
+        </div>
+    </div>
+</footer>
+
+        <div id="info-modal" class="modal-overlay hidden"> <div class="modal-content info-card">
+            <button class="close-btn" onclick="closeInfo()">&times;</button>
+            <div id="info-body" class="info-text"> </div>
+        </div>
+</div>
 </body>
 </html>
