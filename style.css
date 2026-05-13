@@ -197,88 +197,86 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 
 /* Мобильные телефоны (меньше 768px) — всё в 1 колонку */
 @media (max-width: 768px) {
-    /* 1. НАВИГАЦИЯ: Лого и Профиль в одну строку */
+    /* 1. НАВИГАЦИЯ: Лого и профиль в одну строку, как на ПК */
     .glass-nav {
-        padding: 10px 15px;
-        flex-direction: row !important; /* Запрещаем вставать друг под другом */
+        flex-direction: row !important;
         justify-content: space-between;
-        align-items: center;
+        padding: 10px 15px;
     }
 
-    .nav-left .logo { font-size: 18px; }
-    
-    /* Прячем лишние элементы в навигаторе на мобилке, если они мешают */
-    .nav-left span:not(.logo) { display: none; } 
-
-    /* 2. ПРОФИЛЬ: Исправляем вылет влево */
-    #my-bookings {
-        position: absolute;
-        right: 10px; /* Прижимаем к правому краю */
-        left: auto;
-        width: 280px;
-        top: 60px;
+    .nav-left {
+        flex-direction: row !important;
+        gap: 10px;
     }
 
-    /* 3. ШАГИ: Масштабируем "как на ПК" */
+    /* Скрываем текст "Админ-панель" или другие надписи, оставляем только иконки/лого */
+    .nav-left span:not(.logo) { display: none; }
+
+    /* 2. ШАГИ: Тот самый вид "как на ПК", но мелкий */
     .steps-container {
         display: flex !important;
-        flex-direction: row !important; /* Строго в строку */
+        flex-direction: row !important; /* Строго в ряд */
+        gap: 5px; /* Минимальный зазор */
         justify-content: space-between;
-        gap: 5px;
-        padding: 0;
+        align-items: stretch;
     }
 
     .step-card {
-        flex: 1;
-        padding: 10px 5px;
-        min-width: 0; /* Важно для сжатия */
-        border-radius: 10px;
+        flex: 1; /* Равномерно распределяем */
+        padding: 8px 4px; /* Минимум падингов */
+        text-align: center;
+        min-width: 0; /* Чтобы не распирало */
     }
 
     .step-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
-        margin-bottom: 5px;
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        margin: 0 auto 5px;
     }
 
-    .step-card h3 { font-size: 10px; white-space: nowrap; }
-    .step-card p { display: none; } /* Скрываем описание, оставляем только заголовки, чтобы влезло */
-
-    .step-card::after { display: none !important; } /* Убираем линии */
-
-    /* 4. КАТЕГОРИИ И БРЕНДЫ: В ряд со скроллом */
-    .filter-group {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+    .step-card h3 {
+        font-size: 9px; /* Уменьшаем шрифт заголовка */
+        line-height: 1;
+        white-space: normal; /* Разрешаем перенос, если слово длинное */
     }
 
+    .step-card p {
+        display: none; /* Описания на мобилке в ряд не влезут никак, скрываем их */
+    }
+
+    .step-card::after {
+        display: none !important; /* Убираем соединительные линии */
+    }
+
+    /* 3. КАТЕГОРИИ: Возвращаем "как было", но компактно */
     .filter-row {
         display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        width: calc(100% + 40px); /* Выход за границы падингов для красоты */
-        margin-left: -20px;
-        padding: 0 20px 10px 20px;
+        flex-wrap: nowrap; /* В ряд */
+        overflow-x: auto; /* С возможностью листать */
         gap: 8px;
-        -webkit-overflow-scrolling: touch;
+        padding-bottom: 5px;
     }
-
-    .filter-row::-webkit-scrollbar { display: none; }
+    
+    .filter-row::-webkit-scrollbar { display: none; } /* Скрываем скролл */
 
     .filter-chip, .brand-chip {
         flex-shrink: 0;
-        padding: 6px 12px;
-        font-size: 12px;
+        font-size: 11px;
+        padding: 5px 10px;
     }
 
-    /* 5. СЕТКА И ШРИФТЫ */
-    .content { padding: 20px 15px; }
-    h1 { font-size: 26px; text-align: center; }
-    
+    /* 4. СЕТКА КАРТОЧЕК */
     .bento-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Карточки инструментов пусть будут на всю ширину */
+    }
+
+    /* 5. ИСПРАВЛЕНИЕ ПРОФИЛЯ */
+    #my-bookings {
+        position: absolute;
+        right: 10px;
+        left: auto;
+        width: 260px;
     }
 }
 
