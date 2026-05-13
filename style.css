@@ -196,60 +196,41 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 }
 
 /* Мобильные телефоны (меньше 768px) — всё в 1 колонку */
-/* --- КОНЕЦ ОСНОВНЫХ СТИЛЕЙ --- */
-
 @media (max-width: 768px) {
-    /* 1. Навигация и Шапка */
     .glass-nav {
         padding: 15px 20px;
         flex-direction: column;
         gap: 15px;
+        .steps-title-inner {
+        font-size: 18px;
+    }
     }
     
-    .nav-left { 
-        width: 100%; 
-        justify-content: space-between; 
-        gap: 10px; 
-    }
+    .nav-left { gap: 15px; flex-wrap: wrap; justify-content: center; }
 
-    /* ФИКС: Чтобы инвентарь не вылетал за экран */
-    #my-bookings {
-        position: fixed;
-        top: 80px; /* чуть ниже шапки */
-        right: 10px;
-        left: 10px;
-        width: auto;
-        max-width: none;
-    }
+    .content { padding: 30px 20px; }
+    
+    h1 { font-size: 32px; letter-spacing: -1px; }
 
-    /* 2. Секция "Три шага" */
     .steps-container {
         flex-direction: column;
-        align-items: center;
-        gap: 40px;
+        gap: 20px;
     }
 
-    .step-card {
-        width: 100%;
-        max-width: 320px;
-    }
-
-    /* ФИКС: Убираем полосочки, которые съезжают */
-    .step-card::after {
-        display: none;
-    }
-
-    /* 3. Сетка карточек */
     .bento-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Одна колонка */
+        grid-auto-rows: auto;
     }
 
     .card.wide {
-        grid-column: span 1;
+        grid-column: span 1; /* На мобилках широкие карты становятся обычными */
     }
 
-    /* Заголовки */
-    h1 { font-size: 32px; }
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 }
 
 .dropdown-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
@@ -310,4 +291,8 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     margin-bottom: 15px; 
     line-height: 1.6; 
     color: rgba(0, 0, 0, 0.8); 
+}
+
+@media (max-width: 768px) {
+    .footer-content { flex-direction: column; gap: 20px; text-align: center; }
 }
