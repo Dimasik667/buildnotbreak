@@ -113,6 +113,7 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 
 
 
+
 /* FILTERS */
 .filter-section { display: flex; flex-direction: column; gap: 25px; margin-bottom: 60px; }
 .filter-group { display: flex; align-items: center; gap: 30px; }
@@ -215,6 +216,14 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     .steps-container {
         flex-direction: column;
         gap: 20px;
+    }
+
+    .step::after {
+        display: none !important;
+    }
+
+    .step:not(:last-child)::after {
+        display: none !important;
     }
 
     .bento-grid {
