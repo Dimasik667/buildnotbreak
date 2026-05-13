@@ -197,39 +197,62 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 
 /* Мобильные телефоны (меньше 768px) — всё в 1 колонку */
 @media (max-width: 768px) {
+    /* 1. Навигация и Шапка */
     .glass-nav {
         padding: 15px 20px;
         flex-direction: column;
         gap: 15px;
-        .steps-title-inner {
-        font-size: 18px;
-    }
     }
     
-    .nav-left { gap: 15px; flex-wrap: wrap; justify-content: center; }
+    .nav-left { 
+        width: 100%; 
+        justify-content: space-between; 
+        gap: 10px; 
+    }
 
-    .content { padding: 30px 20px; }
-    
-    h1 { font-size: 32px; letter-spacing: -1px; }
+    /* ФИКС: Чтобы инвентарь не вылетал за экран */
+    #my-bookings {
+        position: fixed;
+        top: 80px; /* чуть ниже шапки */
+        right: 10px;
+        left: 10px;
+        width: auto;
+        max-width: none;
+    }
 
+    /* 2. Секция "Три шага" */
     .steps-container {
         flex-direction: column;
-        gap: 20px;
+        align-items: center;
+        gap: 40px;
     }
 
+    .step-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* ФИКС: Убираем полосочки, которые съезжают */
+    .step-card::after {
+        display: none;
+    }
+
+    /* 3. Сетка карточек */
     .bento-grid {
-        grid-template-columns: 1fr; /* Одна колонка */
-        grid-auto-rows: auto;
+        grid-template-columns: 1fr;
     }
 
     .card.wide {
-        grid-column: span 1; /* На мобилках широкие карты становятся обычными */
+        grid-column: span 1;
     }
 
-    .filter-group {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+    /* Заголовки */
+    h1 { font-size: 32px; }
+
+    .footer-content { 
+        flex-direction: column; 
+        gap: 20px; 
+        text-align: center; 
     }
 }
 
@@ -291,8 +314,4 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     margin-bottom: 15px; 
     line-height: 1.6; 
     color: rgba(0, 0, 0, 0.8); 
-}
-
-@media (max-width: 768px) {
-    .footer-content { flex-direction: column; gap: 20px; text-align: center; }
 }
