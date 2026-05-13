@@ -197,7 +197,7 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 
 /* Мобильные телефоны (меньше 768px) — всё в 1 колонку */
 @media (max-width: 768px) {
-    /* 1. Навигация и Шапка */
+    /* Навигация */
     .glass-nav {
         padding: 15px 20px;
         flex-direction: column;
@@ -205,54 +205,69 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     }
     
     .nav-left { 
-        width: 100%; 
-        justify-content: space-between; 
-        gap: 10px; 
+        gap: 15px; 
+        flex-wrap: wrap; 
+        justify-content: center; 
     }
 
-    /* ФИКС: Чтобы инвентарь не вылетал за экран */
-    #my-bookings {
-        position: fixed;
-        top: 80px; /* чуть ниже шапки */
-        right: 10px;
-        left: 10px;
-        width: auto;
-        max-width: none;
-    }
+    .content { padding: 30px 20px; }
+    
+    h1 { font-size: 32px; letter-spacing: -1px; }
 
-    /* 2. Секция "Три шага" */
+    /* ШАГИ — Исправляем, чтобы не было «страшно» */
     .steps-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
+        flex-direction: column; /* Выстраиваем в колонку на узких экранах */
+        gap: 15px;
+        align-items: stretch;
     }
 
     .step-card {
-        width: 100%;
-        max-width: 320px;
+        width: 100%; /* Шаг занимает всю ширину */
+        text-align: left;
     }
 
-    /* ФИКС: Убираем полосочки, которые съезжают */
-    .step-card::after {
+    /* КАТЕГОРИИ И БРЕНДЫ — Возвращаем горизонтальный скролл, чтобы они не были в столбик */
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .filter-row {
+        display: flex;
+        flex-wrap: nowrap; /* Запрещаем перенос на новую строку */
+        overflow-x: auto;  /* Включаем горизонтальную прокрутку */
+        width: 100%;
+        padding-bottom: 8px; /* Место для скроллбара */
+        gap: 8px;
+        -webkit-overflow-scrolling: touch; /* Плавный скролл на iPhone */
+    }
+
+    /* Прячем некрасивый стандартный скроллбар, но оставляем возможность крутить */
+    .filter-row::-webkit-scrollbar {
         display: none;
     }
 
-    /* 3. Сетка карточек */
+    /* Сетка карточек */
     .bento-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
+        grid-auto-rows: auto;
     }
 
     .card.wide {
         grid-column: span 1;
     }
 
-    /* Заголовки */
-    h1 { font-size: 32px; }
+    /* Футер */
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
 
-    .footer-content { 
-        flex-direction: column; 
-        gap: 20px; 
-        text-align: center; 
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
