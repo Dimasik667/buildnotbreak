@@ -197,94 +197,88 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 
 /* Мобильные телефоны (меньше 768px) — всё в 1 колонку */
 @media (max-width: 768px) {
-    /* 1. ГЛАВНЫЙ ФИКС КАТЕГОРИЙ: в ряд со скроллом */
+    /* 1. НАВИГАЦИЯ: Лого и Профиль в одну строку */
+    .glass-nav {
+        padding: 10px 15px;
+        flex-direction: row !important; /* Запрещаем вставать друг под другом */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-left .logo { font-size: 18px; }
+    
+    /* Прячем лишние элементы в навигаторе на мобилке, если они мешают */
+    .nav-left span:not(.logo) { display: none; } 
+
+    /* 2. ПРОФИЛЬ: Исправляем вылет влево */
+    #my-bookings {
+        position: absolute;
+        right: 10px; /* Прижимаем к правому краю */
+        left: auto;
+        width: 280px;
+        top: 60px;
+    }
+
+    /* 3. ШАГИ: Масштабируем "как на ПК" */
+    .steps-container {
+        display: flex !important;
+        flex-direction: row !important; /* Строго в строку */
+        justify-content: space-between;
+        gap: 5px;
+        padding: 0;
+    }
+
+    .step-card {
+        flex: 1;
+        padding: 10px 5px;
+        min-width: 0; /* Важно для сжатия */
+        border-radius: 10px;
+    }
+
+    .step-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .step-card h3 { font-size: 10px; white-space: nowrap; }
+    .step-card p { display: none; } /* Скрываем описание, оставляем только заголовки, чтобы влезло */
+
+    .step-card::after { display: none !important; } /* Убираем линии */
+
+    /* 4. КАТЕГОРИИ И БРЕНДЫ: В ряд со скроллом */
     .filter-group {
         flex-direction: column;
         align-items: flex-start;
-        width: 100vw; /* На всю ширину экрана */
-        margin-left: -20px; /* Компенсируем падинги родителя, если нужно */
-        padding-left: 20px;
+        gap: 8px;
     }
 
     .filter-row {
         display: flex;
-        flex-wrap: nowrap; /* Запрещаем перенос! */
-        overflow-x: auto;  /* Включаем скролл */
-        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        width: calc(100% + 40px); /* Выход за границы падингов для красоты */
+        margin-left: -20px;
+        padding: 0 20px 10px 20px;
         gap: 8px;
-        padding-right: 20px; /* Чтобы последний чипс не прилипал */
-        -webkit-overflow-scrolling: touch; /* Плавность на iOS */
+        -webkit-overflow-scrolling: touch;
     }
 
-    /* Прячем полосу прокрутки, чтобы было эстетично */
-    .filter-row::-webkit-scrollbar {
-        display: none;
-    }
+    .filter-row::-webkit-scrollbar { display: none; }
 
     .filter-chip, .brand-chip {
-        flex-shrink: 0; /* Не даем кнопкам сжиматься */
-        white-space: nowrap; /* Текст в одну строку */
-        padding: 8px 16px;
-        font-size: 13px;
+        flex-shrink: 0;
+        padding: 6px 12px;
+        font-size: 12px;
     }
 
-    /* 2. ШАГИ: сужаем колонку и убиваем линии */
-    .steps-container {
-        flex-direction: row !important; /* Принудительно в ряд */
-        justify-content: space-between;
-        gap: 8px; /* Минимальный зазор */
-        padding: 0;
-        align-items: flex-start;
-    }
-
-    .step-card {
-        flex: 1; /* Все шаги делят место поровну */
-        padding: 12px 8px; /* Уменьшаем внутренние отступы */
-        min-width: 0; /* Чтобы flex-box мог сжимать карточки */
-    }
-
-    /* Уменьшаем иконки и текст внутри шагов */
-    .step-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
-        margin-bottom: 8px;
-    }
-
-    .step-card h3 {
-        font-size: 11px; /* Совсем мелкий шрифт для заголовков */
-        margin-bottom: 4px;
-    }
-
-    .step-card p {
-        font-size: 9px; /* Крошечный текст описания */
-        line-height: 1.2;
-    }
-
-    /* ГАРАНТИРОВАННО УБИРАЕМ ЛИНИИ */
-    .step-card::after {
-        display: none !important;
-    }
-
-    /* 3. ИНВЕНТАРЬ (Аккаунт): чтобы не вылетал */
-    #my-bookings {
-        position: fixed;
-        left: 10px;
-        right: 10px;
-        width: calc(100% - 20px);
-        top: 80px;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-
-    /* 4. СЕТКА: 1 колонка */
+    /* 5. СЕТКА И ШРИФТЫ */
+    .content { padding: 20px 15px; }
+    h1 { font-size: 26px; text-align: center; }
+    
     .bento-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .card.wide {
-        grid-column: span 1;
     }
 }
 
