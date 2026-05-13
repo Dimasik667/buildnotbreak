@@ -28,20 +28,19 @@ const toolsDB = [
     { id: 35, name: "Дизельная пушка Ballu BHDP-20", type: "heavy", brand: "Other", price: 1600, wide: false, lat: 56.77, lon: 60.59, img: "https://main-cdn.sbermegamarket.ru/big2/hlr-system/ccs/95012/MjExMDA3NzdfNzk5MDE4NTQ2/b0.jpg", desc: "Мощный обогрев строящихся объектов и складов." }
 ];
 
-// --- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ---
 let activeTool = null;
 let currentType = 'all';
 let currentBrand = 'all';
 let usersDB = JSON.parse(localStorage.getItem('bnb_users')) || [];
 let myBookings = JSON.parse(localStorage.getItem('bnb_bookings')) || [];
 
-// --- АВТОРИЗАЦИЯ ---
+// функция авторизации
 function toggleAuth() {
     document.getElementById('login-form').classList.toggle('hidden');
     document.getElementById('reg-form').classList.toggle('hidden');
 }
 
-// Регистрация
+// регистрация
 document.getElementById('reg-btn-final').onclick = () => {
     const email = document.getElementById('reg-email').value.trim();
     const name = document.getElementById('reg-user').value.trim();
@@ -55,10 +54,10 @@ document.getElementById('reg-btn-final').onclick = () => {
     localStorage.setItem('bnb_users', JSON.stringify(usersDB));
     
     showToast("Регистрация успешна!");
-    toggleAuth(); // Перекидываем на вход
+    toggleAuth();
 };
 
-// Вход
+// вход
 document.getElementById('login-btn-final').onclick = () => {
     const name = document.getElementById('login-user').value.trim();
     const pass = document.getElementById('login-pass').value.trim();
@@ -89,37 +88,31 @@ function loginUser(name) {
     document.getElementById('app-container').classList.remove('hidden');
     document.getElementById('display-name').innerText = name;
     document.getElementById('avatar-initials').innerText = name[0].toUpperCase();
-    
-    // ЗАГРУЗКА ЛИЧНЫХ БРОНЕЙ:
-    // Ищем брони по ключу "bookings_ИмяПользователя"
     myBookings = JSON.parse(localStorage.getItem(`bookings_${name}`)) || [];
     
     updateUI();
     render();
 }
 
-// Выход (исправлено, чтобы не удалять базу пользователей)
 document.getElementById('logout-btn').onclick = (e) => {
     e.stopPropagation();
     if(confirm("Выйти из системы?")) {
-        localStorage.removeItem('bnb_user'); // Удаляем только текущую сессию
+        localStorage.removeItem('bnb_user');
         window.location.reload(); 
     }
 };
 
-// --- ОТРИСОВКА СЕТКИ (BENTO GRID) ---
+// сетка bento grid
 function render() {
     const grid = document.getElementById('grid-container');
     if (!grid) return;
     grid.innerHTML = '';
 
-    // Фильтрация
     const filtered = toolsDB.filter(t => 
         (currentType === 'all' || t.type === currentType) && 
         (currentBrand === 'all' || t.brand === currentBrand)
     );
 
-    // Обработка пустого результата
     if (filtered.length === 0) {
         grid.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: #666;">
@@ -144,7 +137,7 @@ function render() {
     });
 }
 
-// --- МОДАЛЬНОЕ ОКНО ---
+// модальное окно
 function openModal(tool) {
     activeTool = tool;
     const body = document.getElementById('modal-body');
@@ -165,21 +158,12 @@ window.openRoute = (e, lat, lon) => {
     window.open(`https://yandex.ru/maps/?rtext=~${lat},${lon}&rtt=auto`, '_blank');
 };
 
-// --- БРОНИРОВАНИЕ ---
+// бронь инструмента
 document.getElementById('main-book-btn').onclick = () => {
     if (!activeTool) return;
-
-    // 1. Добавляем инструмент в локальный массив
     myBookings.push({...activeTool, bId: Date.now()});
-
-    // 2. Получаем имя текущего пользователя
     const currentUser = localStorage.getItem('bnb_user');
-
-    // 3. Сохраняем в localStorage с уникальным ключом для этого юзера
-    // Используем `bookings_${currentUser}`, чтобы брони Дмитрия не видел Никита
     localStorage.setItem(`bookings_${currentUser}`, JSON.stringify(myBookings));
-
-    // 4. Обновляем интерфейс
     updateUI();
     document.getElementById('modal').classList.add('hidden');
     showToast("Инструмент забронирован!");
@@ -218,7 +202,7 @@ window.confirmCancel = (e, id) => {
     }
 };
 
-// --- ГЕОЛОКАЦИЯ (ФОРМУЛА ГАВЕРСИНУСОВ) ---
+// геолокация и формула гаверсинусов)
 document.getElementById('geo-btn').onclick = function(e) {
     e.stopPropagation();
     if (!navigator.geolocation) {
@@ -235,7 +219,7 @@ document.getElementById('geo-btn').onclick = function(e) {
             const uLon = pos.coords.longitude;
             
             toolsDB.forEach(t => {
-                const R = 6371; // Радиус Земли в км
+                const R = 6371; // радиус Земли в км
                 const dLat = (t.lat - uLat) * Math.PI / 180;
                 const dLon = (t.lon - uLon) * Math.PI / 180;
                 const a = Math.sin(dLat/2)**2 + 
@@ -256,7 +240,6 @@ document.getElementById('geo-btn').onclick = function(e) {
     );
 };
 
-// --- ФИЛЬТРЫ ---
 document.querySelectorAll('.filter-chip, .brand-chip').forEach(btn => {
     btn.onclick = (e) => {
         const target = e.currentTarget;
@@ -273,7 +256,6 @@ document.querySelectorAll('.filter-chip, .brand-chip').forEach(btn => {
     };
 });
 
-// --- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ---
 function showToast(msg) {
     const t = document.getElementById('toast');
     if(t) {
@@ -295,19 +277,18 @@ window.onclick = () => {
     if(dropdown) dropdown.classList.add('hidden');
 };
 
-// --- ИНИЦИАЛИЗАЦИЯ ---
 window.addEventListener('DOMContentLoaded', () => {
     const savedName = localStorage.getItem('bnb_user');
     if (savedName) {
-        loginUser(savedName); // Внутри этой функции уже вызывается render() и updateUI()
+        loginUser(savedName); 
     } else {
-        render(); // Если не залогинены, просто показываем карточки
+        render(); 
     }
 });
 
 
 
-// Регистрация Service Worker для PWA
+//  service worker 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
@@ -316,10 +297,10 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// --- ЛОГИКА ИНФОРМАЦИОННЫХ МОДАЛОК (ФУТЕР) ---
+// инфа для подвала (footer)
 const infoData = {
     privacy: `
-        <h2>Политика конфиденциальности</h2>
+        <h2>Политика конфиденциальнос ти</h2>
         <p>Мы собираем только те данные, которые необходимы для работы сервиса BNB OS: ваш логин и историю бронирований.</p>
         <p>Данные хранятся локально в вашем браузере и не передаются на сторонние сервера.</p>
     `,

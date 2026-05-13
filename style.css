@@ -10,11 +10,11 @@
 body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 .hidden { display: none !important; }
 
-/* ФОН */
+/* фон */
 .bg-noise { position: fixed; inset: 0; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.05; z-index: -1; pointer-events: none; }
 .bg-glow { position: fixed; top: -10%; right: -5%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(255, 94, 0, 0.1), transparent 70%); z-index: -1; }
 
-/* AUTH */
+/* авторизация */
 .auth-wrapper { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; z-index: 9999; }
 .auth-card { width: 420px; padding: 50px; background: #111; border: 1px solid var(--border); border-radius: 40px; text-align: center; }
 .auth-logo { font-weight: 900; font-size: 24px; margin-bottom: 30px; letter-spacing: -1px; }
@@ -30,7 +30,7 @@ input[type="email"] { width: 100%; padding: 20px; border-radius: 18px; border: 1
 input[type="email"]:focus { border-color: var(--accent); }
 
  
-/* NAVIGATION */
+/* навигация */
 .glass-nav { 
     display: flex; justify-content: space-between; align-items: center; 
     padding: 20px 50px; background: rgba(8,8,8,0.9); backdrop-filter: blur(20px); 
@@ -42,21 +42,21 @@ input[type="email"]:focus { border-color: var(--accent); }
 .geo-btn { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 12px 24px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 700; cursor: pointer; transition: 0.3s; }
 .geo-btn:hover { background: var(--accent); border-color: var(--accent); }
 
-/* HERO & STEPS */
+/* шаги */
 .content { max-width: 1500px; margin: 0 auto; padding: 60px 50px; }
 h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3px; }
 .orange-text { color: var(--accent); }
 
 .steps-container { 
     display: flex; 
-    justify-content: center; /* Центрируем шаги, убирая пустоту справа */
-    gap: 60px; /* Увеличиваем расстояние между шагами для воздуха */
+    justify-content: center; 
+    gap: 60px; 
     margin: 0 auto 60px auto; 
     background: rgba(255, 255, 255, 0.02); 
     padding: 30px 50px; 
     border-radius: 40px; 
     border: 1px solid var(--border);
-    max-width: fit-content; /* Контейнер теперь подстраивается под содержимое */
+    max-width: fit-content; 
     backdrop-filter: blur(10px);
     flex-wrap: wrap;
 }
@@ -80,7 +80,7 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     font-size: 28px; 
     font-weight: 900; 
     color: var(--accent); 
-    background: rgba(255, 94, 0, 0.1); /* Легкий фон под цифрой */
+    background: rgba(255, 94, 0, 0.1); 
     width: 50px;
     height: 50px;
     display: flex;
@@ -98,7 +98,7 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 }
 
 .steps-title-inner {
-    width: 100%; /* Занимает всю верхнюю часть */
+    width: 100%; 
     text-align: center;
     margin-bottom: 30px;
     font-size: 20px;
@@ -108,7 +108,7 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 }
 
 .steps-title-inner span {
-    color: var(--accent); /* Оранжевый акцент */
+    color: var(--accent); 
 }
 
 .footer-qr {
@@ -129,19 +129,19 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     width: 80px;
     height: 80px;
     padding: 5px;
-    background: #fff; /* Белый фон обязателен, чтобы QR читался на темном фоне */
+    background: #fff; 
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
 .footer-qr img:hover {
-    transform: scale(1.1); /* Небольшой эффект при наведении */
+    transform: scale(1.1); 
 }
 
 
 
 
-/* FILTERS */
+/* фильтры */
 .filter-section { display: flex; flex-direction: column; gap: 25px; margin-bottom: 60px; }
 .filter-group { display: flex; align-items: center; gap: 30px; }
 .filter-group span { font-size: 12px; font-weight: 800; color: #444; text-transform: uppercase; letter-spacing: 1px; min-width: 120px; }
@@ -149,7 +149,7 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 .filter-chip, .brand-chip { background: #161616; border: 1px solid #222; color: #777; padding: 12px 24px; border-radius: 50px; cursor: pointer; font-weight: 700; transition: 0.3s; }
 .filter-chip.active, .brand-chip.active { background: #fff; color: #000; border-color: #fff; }
 
-/* BENTO GRID */
+/* сетка BENTO GRID */
 .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 380px; gap: 25px; }
 .card {
     background: var(--card-white); border-radius: 40px; padding: 35px;
@@ -168,15 +168,15 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     overflow: hidden; 
     position: relative;
     background: #fff; 
-    z-index: 1; /* Слой картинки ниже, чем badge */
-    border-radius: 40px 40px 0 0; /* Скругление только сверху, чтобы не вылезало за края */
+    z-index: 1; 
+    border-radius: 40px 40px 0 0; 
 }
 .card-img img { 
     max-width: 85%; 
     max-height: 200px; 
     object-fit: contain; 
     transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
-    filter: brightness(1.02) contrast(1.02); /* Легкая коррекция для чистоты фона */
+    filter: brightness(1.02) contrast(1.02); 
 }
 .card:hover .card-img img { 
     transform: scale(1.12);
@@ -193,22 +193,22 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     font-size: 11px; 
     font-weight: 900; 
     letter-spacing: 1px; 
-    z-index: 10; /* Добавляем приоритет слоя */
-    pointer-events: none; /* Чтобы надпись не мешала клику по карточке */
+    z-index: 10; 
+    pointer-events: none; /
 }
 
-/* MODAL */
+/* модальное окно */
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 2000; }
 .modal-content { background: #fff; color: #000; width: 550px; padding: 60px; border-radius: 50px; position: relative; text-align: center; }
 #modal-body img { width: 100%; max-height: 280px; object-fit: contain; margin-bottom: 30px; }
 .map-btn { background: #f4f4f4; color: #000; border: none; padding: 18px; border-radius: 20px; width: 100%; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; }
 
-/* BUTTONS */
+/* кнопки */
 .primary-btn, .confirm-btn { background: var(--accent); color: #fff; border: none; padding: 20px; border-radius: 20px; font-weight: 900; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s; }
 .confirm-btn:hover { opacity: 0.9; }
 .close-btn { position: absolute; top: 25px; right: 35px; font-size: 40px; background: none; border: none; cursor: pointer; color: #000; }
 
-/* USER HUB */
+/* инвентарь пользователя */
 .user-profile { display: flex; align-items: center; gap: 15px; background: #141414; padding: 8px 20px; border-radius: 50px; border: 1px solid #222; cursor: pointer; position: relative; }
 .avatar { width: 36px; height: 36px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; }
 .bookings-dropdown { position: absolute; top: 75px; right: 0; width: 350px; background: #111; border: 1px solid #222; border-radius: 30px; padding: 25px; z-index: 3000; }
@@ -218,12 +218,12 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 @media (max-width: 1200px) {
     .bento-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: min-content; /* Чтобы карточки подстраивались под контент */
+        grid-auto-rows: min-content; 
     }
     h1 { font-size: 48px; }
 }
 
-/* Мобильные телефоны (меньше 768px) — всё в 1 колонку */
+/* мобильная версия */
 @media (max-width: 768px) {
     .glass-nav {
         padding: 15px 20px;
@@ -254,12 +254,12 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     }
 
     .bento-grid {
-        grid-template-columns: 1fr; /* Одна колонка */
+        grid-template-columns: 1fr; 
         grid-auto-rows: auto;
     }
 
     .card.wide {
-        grid-column: span 1; /* На мобилках широкие карты становятся обычными */
+        grid-column: span 1; 
     }
 
     .filter-group {
@@ -269,13 +269,13 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     }
 
     .bookings-dropdown {
-        position: fixed !important; /* Чтобы окно не зависело от родителя */
-        left: 15px !important;      /* Четкий отступ слева */
-        right: 15px !important;     /* Четкий отступ справа, чтобы было по ширине экрана */
-        width: auto !important;     /* Позволяем left и right задать ширину */
-        transform: none !important; /* Убираем любые сдвиги */
-        top: 70px !important;       /* Высота под шапкой */
-        z-index: 10000;             /* Чтобы было поверх всего */
+        position: fixed !important; 
+        left: 15px !important;      
+        right: 15px !important;     
+        width: auto !important;     
+        transform: none !important; 
+        top: 70px !important;       
+        z-index: 10000;             
     }
 
     .footer-qr {
@@ -291,6 +291,7 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 #booking-count-simple { display: block; margin-top: 2px; }
 .bookings-dropdown h4 { font-size: 12px; text-transform: uppercase; color: #444; letter-spacing: 1px; margin-bottom: 15px; }
 
+/* подвал footer */
 .footer {
     margin-top: 80px;
     padding: 40px 20px;
@@ -323,7 +324,7 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     color: var(--accent);
 }
 
-/* Стили для текстового модального окна */
+
 .info-card {
     max-width: 600px;
     max-height: 80vh;
@@ -348,27 +349,24 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     .footer-content { flex-direction: column; gap: 20px; text-align: center; }
 }
 
-/* --- АДАПТАЦИЯ ДЛЯ НОУТБУКОВ (Desktop Version) --- */
+/* ноутбуки */
 @media (min-width: 992px) {
-    /* 1. Центрируем контент и ограничиваем его ширину, чтобы он не разъезжался */
     .app-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 40px;
     }
 
-    /* 2. Делаем сетку товаров в 3 или 4 колонки */
     .bento-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 колонки */
-        gap: 24px; /* Расстояние между карточками */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 24px; 
         padding: 20px 0;
     }
 
-    /* 3. Исправляем фильтры: на ноуте они должны быть в ряд, а не друг под другом */
     .filters-section {
         display: flex;
-        flex-direction: row; /* Выстраиваем в линию */
+        flex-direction: row; 
         gap: 30px;
         background: rgba(255, 255, 255, 0.03);
         padding: 25px;
@@ -378,25 +376,23 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     }
 
     .filter-group {
-        flex: 1; /* Группы фильтров делят место поровну */
+        flex: 1; 
     }
 
-    /* 4. Делаем карточки товаров аккуратнее */
     .tool-card {
-        aspect-ratio: 4/5; /* Делаем их прямоугольными и одинаковыми */
+        aspect-ratio: 4/5; 
         height: auto;
     }
 
-    /* 5. Уменьшаем гигантскую форму входа (Auth Card) */
     .auth-card {
         width: 400px;
         padding: 40px;
     }
 }
 
-/* Для очень больших мониторов */
+/* большие моники */
 @media (min-width: 1400px) {
     .bento-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+        grid-template-columns: repeat(4, 1fr); 
     }
 }

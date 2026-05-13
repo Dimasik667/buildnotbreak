@@ -7,7 +7,6 @@ const FILES = [
   './manifest.json'
 ];
 
-// Установка и кэширование статики
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(FILES))
@@ -15,7 +14,6 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
-// Активация и удаление старых кэшей
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
@@ -27,7 +25,6 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Стратегия Stale-While-Revalidate
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.open(CACHE_NAME).then(cache => {
