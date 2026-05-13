@@ -196,88 +196,60 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
 }
 
 /* Мобильные телефоны (меньше 768px) — всё в 1 колонку */
+/* --- КОНЕЦ ОСНОВНЫХ СТИЛЕЙ --- */
+
 @media (max-width: 768px) {
-    /* 1. НАВИГАЦИЯ: Лого и профиль в одну строку, как на ПК */
+    /* 1. Навигация и Шапка */
     .glass-nav {
-        flex-direction: row !important;
-        justify-content: space-between;
-        padding: 10px 15px;
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-left { 
+        width: 100%; 
+        justify-content: space-between; 
+        gap: 10px; 
     }
 
-    .nav-left {
-        flex-direction: row !important;
-        gap: 10px;
+    /* ФИКС: Чтобы инвентарь не вылетал за экран */
+    #my-bookings {
+        position: fixed;
+        top: 80px; /* чуть ниже шапки */
+        right: 10px;
+        left: 10px;
+        width: auto;
+        max-width: none;
     }
 
-    /* Скрываем текст "Админ-панель" или другие надписи, оставляем только иконки/лого */
-    .nav-left span:not(.logo) { display: none; }
-
-    /* 2. ШАГИ: Тот самый вид "как на ПК", но мелкий */
+    /* 2. Секция "Три шага" */
     .steps-container {
-        display: flex !important;
-        flex-direction: row !important; /* Строго в ряд */
-        gap: 5px; /* Минимальный зазор */
-        justify-content: space-between;
-        align-items: stretch;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
     }
 
     .step-card {
-        flex: 1; /* Равномерно распределяем */
-        padding: 8px 4px; /* Минимум падингов */
-        text-align: center;
-        min-width: 0; /* Чтобы не распирало */
+        width: 100%;
+        max-width: 320px;
     }
 
-    .step-icon {
-        width: 28px;
-        height: 28px;
-        font-size: 14px;
-        margin: 0 auto 5px;
-    }
-
-    .step-card h3 {
-        font-size: 9px; /* Уменьшаем шрифт заголовка */
-        line-height: 1;
-        white-space: normal; /* Разрешаем перенос, если слово длинное */
-    }
-
-    .step-card p {
-        display: none; /* Описания на мобилке в ряд не влезут никак, скрываем их */
-    }
-
+    /* ФИКС: Убираем полосочки, которые съезжают */
     .step-card::after {
-        display: none !important; /* Убираем соединительные линии */
+        display: none;
     }
 
-    /* 3. КАТЕГОРИИ: Возвращаем "как было", но компактно */
-    .filter-row {
-        display: flex;
-        flex-wrap: nowrap; /* В ряд */
-        overflow-x: auto; /* С возможностью листать */
-        gap: 8px;
-        padding-bottom: 5px;
-    }
-    
-    .filter-row::-webkit-scrollbar { display: none; } /* Скрываем скролл */
-
-    .filter-chip, .brand-chip {
-        flex-shrink: 0;
-        font-size: 11px;
-        padding: 5px 10px;
-    }
-
-    /* 4. СЕТКА КАРТОЧЕК */
+    /* 3. Сетка карточек */
     .bento-grid {
-        grid-template-columns: 1fr; /* Карточки инструментов пусть будут на всю ширину */
+        grid-template-columns: 1fr;
     }
 
-    /* 5. ИСПРАВЛЕНИЕ ПРОФИЛЯ */
-    #my-bookings {
-        position: absolute;
-        right: 10px;
-        left: auto;
-        width: 260px;
+    .card.wide {
+        grid-column: span 1;
     }
+
+    /* Заголовки */
+    h1 { font-size: 32px; }
 }
 
 .dropdown-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
