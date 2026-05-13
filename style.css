@@ -111,6 +111,33 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
     color: var(--accent); /* Оранжевый акцент */
 }
 
+.footer-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-qr p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-qr img {
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    background: #fff; /* Белый фон обязателен, чтобы QR читался на темном фоне */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.footer-qr img:hover {
+    transform: scale(1.1); /* Небольшой эффект при наведении */
+}
+
 
 
 
@@ -249,6 +276,10 @@ h1 { font-size: 72px; font-weight: 900; margin-bottom: 40px; letter-spacing: -3p
         transform: none !important; /* Убираем любые сдвиги */
         top: 70px !important;       /* Высота под шапкой */
         z-index: 10000;             /* Чтобы было поверх всего */
+    }
+
+    .footer-qr {
+        display: none;
     }
 
 }
